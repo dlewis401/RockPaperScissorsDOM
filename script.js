@@ -4,11 +4,19 @@ let tieMessages = document.querySelector('.tieMessage');
 
     // SCORES
     let playerScore = document.querySelector('.playerScore');
-    let playerScoreCount = parseInt(playerScore.textContent);
+    playerScoreCount = 0;
 
     // COMPUTER SCORE
     let computerScore = document.querySelector('.computerScore');
-    let computerScoreCount = parseInt(computerScore.textContent);
+    computerScoreCount = 0;
+
+    function updatePlayerScore() {
+        playerScore.textContent = ++playerScoreCount;
+    }
+
+    function updateComputerScore() {
+        computerScore.textContent = ++computerScoreCount;
+    }
 
 
 function computerSelection() {
@@ -36,15 +44,15 @@ function playRound() {
         }
 
         if (computerMessages.textContent == "Paper" && playerOption.textContent == "Rock") {
+            updateComputerScore();
             tieMessages.textContent = "Computer wins - try again!"
-            tieMessages.style = "color: red;"
-            computerScore.textContent = computerScoreCount++;
+            tieMessages.style = "color: red";
         }
 
         if (computerMessages.textContent == "Scissors" && playerOption.textContent == "Rock") {
+            updatePlayerScore();
             tieMessages.textContent = "Player wins - well done!"
             tieMessages.style = "color: green;"
-            playerScore.textContent = playerScoreCount++;
         }
 
         
@@ -65,15 +73,15 @@ function playRound() {
         }
 
         if (computerMessages.textContent == "Rock" && playerOption.textContent == "Paper") {
+            updatePlayerScore();
             tieMessages.textContent = "Player wins - well done!"
             tieMessages.style = "color: green;"
-            playerScore.textContent = playerScoreCount++;
         }
 
         if (computerMessages.textContent == "Scissors" && playerOption.textContent == "Paper") {
+            updateComputerScore();
             tieMessages.textContent = "Computer wins - try again!"
             tieMessages.style = "color: red;"
-            computerScore.textContent = computerScoreCount++;
         }
         
     });
@@ -92,40 +100,45 @@ function playRound() {
          }
 
          if (computerMessages.textContent == "Rock" && playerOption.textContent == "Scissors") {
+            updatePlayerScore();
             tieMessages.textContent = "Player wins - well done!"
             tieMessages.style = "color: green;"
-            playerScore.textContent = playerScoreCount++;
         }
 
         if (computerMessages.textContent == "Paper" && playerOption.textContent == "Scissors") {
+            updateComputerScore();
             tieMessages.textContent = "Player wins - well done!"
             tieMessages.style = "color: green;"
-            playerScore.textContent = playerScoreCount++;
+            
         }
-        
+
+
+            winnerDeclaration();
 
      });
 
     }
 
-
-/*
-function winnerDeclaration() {
-    if (computerScore.textContent == "5") {
-        tieMessages.textContent = "You lost to the Computer - try again!"
+    function winnerDeclaration() {
+        if (computerScore.textContent == "5") {
+            playerScoreCount = 0;
+            computerScoreCount = 0;
+            computerScore.textContent = computerScoreCount;
+            playerScore.textContent = playerScoreCount;
+            tieMessages.textContent = "You lost to the Computer - try again!"
             tieMessages.style = "color: red;"
-    } else {
-        tieMessages.textContent = "You won - well done!"
-        tieMessages.style = "color: green;"  
+        } 
+        
+        if (playerScore.textContent == "5") {
+            playerScoreCount = 0;
+            computerScoreCount = 0;
+            computerScore.textContent = computerScoreCount;
+            playerScore.textContent = playerScoreCount;
+            tieMessages.textContent = "You won - well done!"
+            tieMessages.style = "color: green;" 
+        }
+
+        
+    
     }
-}
-
-*/
-
-
-
-function game(computerScore, playerScore) {
-    playRound();
-}
-
-game();
+playRound();
