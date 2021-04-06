@@ -11,4 +11,4 @@ Tuesday 6th April - 02:22AM:
 - made functionally in all elements.
 
 IN PROGRESS:
-- WINNER SYSTEM
+- WINNER SYSTEM (NEVER)

@@ -109,9 +109,9 @@ function playRound() {
     }
 
 
-
+/*
 function winnerDeclaration() {
-    if (computerScore.textContent <= 5 || playerScore.textContent <= 5) {
+    if (computerScore.textContent == "5") {
         tieMessages.textContent = "You lost to the Computer - try again!"
             tieMessages.style = "color: red;"
     } else {
@@ -120,11 +120,12 @@ function winnerDeclaration() {
     }
 }
 
+*/
+
 
 
 function game(computerScore, playerScore) {
     playRound();
-    winnerDeclaration();
 }
 
 game();
